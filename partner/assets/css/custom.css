@@ -622,7 +622,17 @@ body {
   }
 
   .login-illustration {
-    padding: 50px 40px 30px 40px;
+    padding: 40px 40px 30px 40px;
+  }
+
+  .app-title {
+    font-size: 2.8rem;
+  }
+
+  .modern-illustration {
+    width: 240px;
+    height: 180px;
+    margin: 20px 0;
   }
 
   /* Restaurant icon replaced with app logo */
@@ -661,7 +671,17 @@ body {
 
   .login-illustration {
     flex: 1;
-    padding: 60px 50px;
+    padding: 50px 40px;
+  }
+
+  .app-title {
+    font-size: 3.2rem;
+  }
+
+  .modern-illustration {
+    width: 280px;
+    height: 220px;
+    margin: 24px 0;
   }
 
   .login-form-container {
