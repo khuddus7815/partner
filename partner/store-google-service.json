@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "781024855506",
+    "firebase_url": "https://totalfresh-1b41a.firebaseio.com",
+    "project_id": "totalfresh-1b41a",
+    "storage_bucket": "totalfresh-1b41a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781024855506:android:30a0d50ac9a219c10c740b",
+        "android_client_info": {
+          "package_name": "com.totalfresh.business"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781024855506-o72d4rtp7884oiehtfln1jg7q3530pit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpeUKdu26jmIoa91Jpr_e1oPnUxcijDB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781024855506-o72d4rtp7884oiehtfln1jg7q3530pit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
