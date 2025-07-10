@@ -448,7 +448,20 @@
         const root = document.getElementById("root");
 
         if (modernLoginOverlay) {
-          // Show modern login by default
+          // Check if user is already authenticated
+          const isAuthenticated =
+            localStorage.getItem("token") ||
+            localStorage.getItem("auth_token") ||
+            sessionStorage.getItem("token");
+
+          if (isAuthenticated) {
+            // User is already logged in, show the original app
+            modernLoginOverlay.style.display = "none";
+            root.style.display = "block";
+            return;
+          }
+
+          // Show modern login for unauthenticated users
           modernLoginOverlay.style.display = "flex";
           root.style.display = "none";
 
