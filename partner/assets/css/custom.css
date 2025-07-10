@@ -1,24 +1,24 @@
-/* Modern Restaurant Store App - Custom Styles */
+/* Modern Restaurant Store App - Mobile-First Green Theme */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --primary-color: #ff6b35;
-  --primary-dark: #e55a2e;
-  --primary-light: #ff8a5e;
-  --secondary-color: #2e7d32;
-  --secondary-light: #4caf50;
-  --accent-color: #ffc107;
-  --background-color: #fafafa;
+  --primary-color: #10b981;
+  --primary-dark: #059669;
+  --primary-light: #34d399;
+  --secondary-color: #065f46;
+  --secondary-light: #047857;
+  --accent-color: #f59e0b;
+  --background-color: #f0fdf4;
   --surface-color: #ffffff;
-  --text-primary: #212121;
-  --text-secondary: #757575;
-  --text-light: #bdbdbd;
-  --error-color: #d32f2f;
-  --success-color: #388e3c;
-  --border-color: #e0e0e0;
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
-  --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-light: #9ca3af;
+  --error-color: #dc2626;
+  --success-color: #10b981;
+  --border-color: #d1d5db;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-heavy: 0 10px 15px rgba(0, 0, 0, 0.1);
   --border-radius: 12px;
   --border-radius-small: 8px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -33,20 +33,28 @@ body {
     "Segoe UI",
     Roboto,
     sans-serif !important;
-  background: linear-gradient(135deg, #ff6b35 0%, #ffc107 100%) !important;
+  background: linear-gradient(
+    135deg,
+    #10b981 0%,
+    #059669 50%,
+    #047857 100%
+  ) !important;
   min-height: 100vh;
   color: var(--text-primary) !important;
+  margin: 0;
+  padding: 0;
 }
 
-/* Login Container */
+/* Mobile-First Login Container */
 .login-container {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
+  justify-content: flex-start;
+  padding: 0;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .login-container::before {
@@ -58,89 +66,116 @@ body {
   bottom: 0;
   background:
     radial-gradient(
-      circle at 20% 80%,
+      circle at 20% 20%,
       rgba(255, 255, 255, 0.1) 0%,
       transparent 50%
     ),
     radial-gradient(
-      circle at 80% 20%,
+      circle at 80% 80%,
       rgba(255, 255, 255, 0.1) 0%,
       transparent 50%
     );
   pointer-events: none;
 }
 
-/* Modern Login Card */
+/* Single Column Mobile Design */
 .modern-login-card {
-  background: var(--surface-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-heavy);
-  padding: 0;
+  background: transparent;
   width: 100%;
-  max-width: 900px;
-  min-height: 600px;
+  max-width: 100%;
+  min-height: 100vh;
   display: flex;
-  overflow: hidden;
+  flex-direction: column;
+  overflow: visible;
   position: relative;
-  backdrop-filter: blur(10px);
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-/* Login Illustration Side */
+/* Compact Header Section */
 .login-illustration {
-  flex: 1;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--primary-dark) 100%
-  );
+  flex: 0 0 auto;
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 40px 20px 20px 20px;
   color: white;
   position: relative;
+  min-height: auto;
+}
+
+.floating-elements {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  pointer-events: none;
   overflow: hidden;
 }
 
-.login-illustration::before {
-  content: "";
+.floating-element {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 1px,
-    transparent 1px
-  );
-  background-size: 20px 20px;
-  animation: float 20s ease-in-out infinite;
+  opacity: 0.3;
+  animation: floatAround 20s infinite ease-in-out;
+  font-size: 20px;
 }
 
-@keyframes float {
+.floating-element:nth-child(1) {
+  top: 10px;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.floating-element:nth-child(2) {
+  top: 5px;
+  right: 20%;
+  animation-delay: 3s;
+}
+
+.floating-element:nth-child(3) {
+  top: 15px;
+  left: 60%;
+  animation-delay: 6s;
+}
+
+.floating-element:nth-child(4) {
+  top: 20px;
+  right: 5%;
+  animation-delay: 9s;
+}
+
+@keyframes floatAround {
   0%,
   100% {
     transform: translateY(0px) rotate(0deg);
   }
+  25% {
+    transform: translateY(-10px) rotate(90deg);
+  }
   50% {
-    transform: translateY(-20px) rotate(180deg);
+    transform: translateY(-5px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(270deg);
   }
 }
 
 .restaurant-icon {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 30px;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 16px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 60px;
+  font-size: 40px;
   color: white;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-medium);
   position: relative;
   z-index: 2;
 }
@@ -152,50 +187,58 @@ body {
 }
 
 .welcome-text h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   line-height: 1.2;
 }
 
 .welcome-text p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   opacity: 0.9;
   font-weight: 300;
-  max-width: 300px;
-  line-height: 1.5;
+  max-width: 280px;
+  line-height: 1.4;
+  margin: 0;
 }
 
-/* Login Form Side */
+/* Compact Form Section */
 .login-form-container {
   flex: 1;
-  padding: 60px 50px;
+  padding: 20px 20px 40px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  background: var(--surface-color);
+  margin: 0 10px;
+  border-radius: 24px 24px 0 0;
+  box-shadow: var(--shadow-heavy);
+  position: relative;
+  z-index: 1;
 }
 
 .login-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .login-header h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .login-header p {
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
+  margin: 0;
 }
 
 /* Modern Form Styles */
 .modern-form-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -213,11 +256,12 @@ body {
   transition: var(--transition);
   outline: none;
   font-family: inherit;
+  box-sizing: border-box;
 }
 
 .modern-input:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
   transform: translateY(-1px);
 }
 
@@ -232,7 +276,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-light);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: var(--transition);
   z-index: 2;
 }
@@ -243,7 +287,7 @@ body {
 
 .modern-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 500;
   color: var(--text-primary);
   font-size: 0.9rem;
@@ -266,17 +310,18 @@ body {
   cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--shadow-light);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  text-transform: none;
+  letter-spacing: 0.25px;
+  box-sizing: border-box;
 }
 
 .modern-btn-primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: var(--shadow-medium);
   background: linear-gradient(
     135deg,
     var(--primary-dark) 0%,
-    var(--primary-color) 100%
+    var(--secondary-color) 100%
   );
 }
 
@@ -284,15 +329,49 @@ body {
   transform: translateY(0);
 }
 
+/* Form Options Row */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.form-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.form-options input[type="checkbox"] {
+  accent-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.form-options a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.form-options a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
 /* Social Login Section */
 .social-login-section {
-  margin: 30px 0;
+  margin: 24px 0 0 0;
   text-align: center;
 }
 
 .divider {
   position: relative;
-  margin: 30px 0;
+  margin: 24px 0;
   text-align: center;
 }
 
@@ -308,21 +387,16 @@ body {
 
 .divider span {
   background: var(--surface-color);
-  padding: 0 20px;
+  padding: 0 16px;
   color: var(--text-secondary);
   font-size: 0.9rem;
   font-weight: 500;
 }
 
-.social-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.social-btn {
-  flex: 1;
-  padding: 12px;
+/* Google Login Button */
+.google-login-button {
+  width: 100%;
+  padding: 14px 16px;
   border: 2px solid var(--border-color);
   border-radius: var(--border-radius-small);
   background: var(--surface-color);
@@ -331,60 +405,45 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
   font-weight: 500;
   color: var(--text-primary);
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
-.social-btn:hover {
+.google-login-button:hover {
   border-color: var(--primary-color);
   transform: translateY(-1px);
   box-shadow: var(--shadow-light);
+  background: rgba(16, 185, 129, 0.02);
 }
 
-.social-btn.google {
-  border-color: #ea4335;
+.google-login-button i {
+  font-size: 1.2rem;
   color: #ea4335;
-}
-
-.social-btn.facebook {
-  border-color: #1877f2;
-  color: #1877f2;
-}
-
-/* OTP Section */
-.otp-section {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 107, 53, 0.05) 0%,
-    rgba(255, 193, 7, 0.05) 100%
-  );
-  padding: 20px;
-  border-radius: var(--border-radius-small);
-  margin-top: 20px;
-  border: 1px solid rgba(255, 107, 53, 0.2);
-}
-
-.otp-title {
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: 10px;
-  text-align: center;
 }
 
 /* Footer Links */
 .login-footer {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 24px;
   padding-top: 20px;
   border-top: 1px solid var(--border-color);
+}
+
+.login-footer p {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 .login-footer a {
   color: var(--primary-color);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition);
+  font-size: 1rem;
 }
 
 .login-footer a:hover {
@@ -392,75 +451,34 @@ body {
   text-decoration: underline;
 }
 
-/* Restaurant themed decorative elements */
-.floating-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  overflow: hidden;
+.login-footer a i {
+  margin-right: 6px;
 }
 
-.floating-element {
-  position: absolute;
-  opacity: 0.1;
-  animation: floatAround 15s infinite ease-in-out;
+.footer-links {
+  margin-top: 16px;
+  font-size: 0.8rem;
 }
 
-.floating-element:nth-child(1) {
-  top: 10%;
-  left: 10%;
-  font-size: 30px;
-  animation-delay: 0s;
+.footer-links a {
+  color: var(--text-secondary);
+  margin: 0 8px;
+  font-weight: 400;
+  font-size: 0.8rem;
 }
 
-.floating-element:nth-child(2) {
-  top: 20%;
-  right: 15%;
-  font-size: 25px;
-  animation-delay: 2s;
-}
-
-.floating-element:nth-child(3) {
-  bottom: 30%;
-  left: 20%;
-  font-size: 35px;
-  animation-delay: 4s;
-}
-
-.floating-element:nth-child(4) {
-  bottom: 15%;
-  right: 10%;
-  font-size: 28px;
-  animation-delay: 6s;
-}
-
-@keyframes floatAround {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-20px) rotate(90deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(180deg);
-  }
-  75% {
-    transform: translateY(-30px) rotate(270deg);
-  }
+.footer-links span {
+  color: var(--text-light);
 }
 
 /* Error and Success States */
 .error-message {
-  background: rgba(211, 47, 47, 0.1);
+  background: rgba(220, 38, 38, 0.1);
   border: 1px solid var(--error-color);
   color: var(--error-color);
   padding: 12px 16px;
   border-radius: var(--border-radius-small);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -468,12 +486,12 @@ body {
 }
 
 .success-message {
-  background: rgba(56, 142, 60, 0.1);
+  background: rgba(16, 185, 129, 0.1);
   border: 1px solid var(--success-color);
   color: var(--success-color);
   padding: 12px 16px;
   border-radius: var(--border-radius-small);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -482,8 +500,8 @@ body {
 
 /* Loading State */
 .loading-spinner {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   border-top-color: white;
@@ -496,62 +514,10 @@ body {
   }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .modern-login-card {
-    flex-direction: column;
-    max-width: 100%;
-    margin: 20px;
-    min-height: auto;
-  }
-
-  .login-illustration {
-    padding: 30px 20px;
-    min-height: 200px;
-  }
-
-  .restaurant-icon {
-    width: 80px;
-    height: 80px;
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-
-  .welcome-text h2 {
-    font-size: 1.8rem;
-  }
-
-  .login-form-container {
-    padding: 40px 30px;
-  }
-
-  .social-buttons {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-container {
-    padding: 10px;
-  }
-
-  .login-form-container {
-    padding: 30px 20px;
-  }
-
-  .welcome-text h2 {
-    font-size: 1.5rem;
-  }
-
-  .welcome-text p {
-    font-size: 1rem;
-  }
-}
-
 /* Enhanced focus states for accessibility */
 .modern-input:focus,
 .modern-btn-primary:focus,
-.social-btn:focus {
+.google-login-button:focus {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
@@ -573,14 +539,14 @@ body {
 
 .auth-input:focus {
   border-color: var(--primary-color) !important;
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
 }
 
 .login-title {
   font-family: "Inter", sans-serif !important;
   font-weight: 600 !important;
   color: var(--text-primary) !important;
-  font-size: 2rem !important;
+  font-size: 1.5rem !important;
 }
 
 .login-subtitle {
@@ -588,21 +554,115 @@ body {
   font-weight: 400 !important;
 }
 
-.facebook-login-button,
-.google-login-button {
-  border: 2px solid var(--border-color) !important;
-  border-radius: var(--border-radius-small) !important;
-  padding: 12px 20px !important;
-  transition: var(--transition) !important;
-  font-weight: 500 !important;
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .login-container {
+    padding: 20px;
+    justify-content: center;
+  }
+
+  .modern-login-card {
+    max-width: 480px;
+    min-height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    margin: 20px;
+  }
+
+  .login-illustration {
+    padding: 50px 40px 30px 40px;
+  }
+
+  .restaurant-icon {
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .welcome-text h2 {
+    font-size: 2.2rem;
+  }
+
+  .welcome-text p {
+    font-size: 1.1rem;
+    max-width: 320px;
+  }
+
+  .login-form-container {
+    padding: 40px;
+    margin: 0;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+
+  .login-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .login-header p {
+    font-size: 1rem;
+  }
 }
 
-.facebook-login-button:hover {
-  border-color: #1877f2 !important;
-  transform: translateY(-1px) !important;
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .modern-login-card {
+    max-width: 900px;
+    flex-direction: row;
+    min-height: 600px;
+  }
+
+  .login-illustration {
+    flex: 1;
+    padding: 60px 50px;
+  }
+
+  .login-form-container {
+    flex: 1;
+    padding: 60px 50px;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+
+  .floating-elements {
+    top: 0;
+    height: 100%;
+  }
+
+  .floating-element {
+    font-size: 24px;
+  }
+
+  .floating-element:nth-child(1) {
+    top: 15%;
+    left: 15%;
+  }
+
+  .floating-element:nth-child(2) {
+    top: 25%;
+    right: 20%;
+  }
+
+  .floating-element:nth-child(3) {
+    bottom: 35%;
+    left: 25%;
+  }
+
+  .floating-element:nth-child(4) {
+    bottom: 20%;
+    right: 15%;
+  }
 }
 
-.google-login-button:hover {
-  border-color: #ea4335 !important;
-  transform: translateY(-1px) !important;
+/* Remove any OTP-related styles */
+.otp-section {
+  display: none !important;
+}
+
+.login-with-otp-input {
+  display: none !important;
+}
+
+/* Hide any elements with OTP in their classes */
+[class*="otp"] {
+  display: none !important;
 }
