@@ -550,6 +550,23 @@
           modernLoginOverlay.style.display = "flex";
           root.style.display = "none";
 
+          // Periodically check if the user gets authenticated by other means
+          const authCheckInterval = setInterval(() => {
+            const token =
+              localStorage.getItem("token") ||
+              localStorage.getItem("auth_token") ||
+              sessionStorage.getItem("token");
+            const userLoggedIn = document.querySelector(
+              '.user-menu, .profile-menu, .dashboard, [class*="logged"], [class*="auth"]',
+            );
+
+            if (token || userLoggedIn) {
+              clearInterval(authCheckInterval);
+              modernLoginOverlay.style.display = "none";
+              root.style.display = "block";
+            }
+          }, 1000);
+
           // Form submission handler
           const loginForm = document.getElementById("modernLoginForm");
           const loginBtn = document.getElementById("loginBtn");
