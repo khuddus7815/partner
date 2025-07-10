@@ -1,0 +1,726 @@
+/* TotalFresh Store App - Mobile-First Blue-Green Gradient Theme */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #10b981;
+  --primary-dark: #0891b2;
+  --primary-light: #22d3ee;
+  --secondary-color: #0ea5e9;
+  --secondary-light: #38bdf8;
+  --accent-color: #06b6d4;
+  --background-color: #f0fdfa;
+  --surface-color: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-light: #9ca3af;
+  --error-color: #dc2626;
+  --success-color: #10b981;
+  --border-color: #d1d5db;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-heavy: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --border-radius-small: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Typography */
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif !important;
+  background: linear-gradient(
+    135deg,
+    #10b981 0%,
+    #0891b2 25%,
+    #0ea5e9 50%,
+    #06b6d4 75%,
+    #22d3ee 100%
+  ) !important;
+  min-height: 100vh;
+  color: var(--text-primary) !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Mobile-First Login Container */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(34, 211, 238, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(16, 185, 129, 0.3) 0%,
+      transparent 40%
+    );
+  pointer-events: none;
+  animation: illuminateGradient 6s ease-in-out infinite;
+}
+
+@keyframes illuminateGradient {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Single Column Mobile Design */
+.modern-login-card {
+  background: transparent;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  position: relative;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Compact Header Section */
+.login-illustration {
+  flex: 0 0 auto;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px 20px 20px;
+  color: white;
+  position: relative;
+  min-height: auto;
+}
+
+/* App Branding */
+.app-branding {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.app-logo {
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(34, 211, 238, 0.6));
+  }
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  background: linear-gradient(135deg, #ffffff 0%, #22d3ee 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Modern Illustration */
+.modern-illustration {
+  width: 200px;
+  height: 150px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.modern-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* Remove floating elements for cleaner design */
+
+/* Removed restaurant icon - replaced with app logo */
+
+.welcome-text {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.welcome-text h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-text p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 400;
+  max-width: 300px;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Compact Form Section */
+.login-form-container {
+  flex: 1;
+  padding: 20px 20px 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: var(--surface-color);
+  margin: 0 10px;
+  border-radius: 24px 24px 0 0;
+  box-shadow: var(--shadow-heavy);
+  position: relative;
+  z-index: 1;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.login-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Modern Form Styles */
+.modern-form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.modern-input-wrapper {
+  position: relative;
+}
+
+.modern-input {
+  width: 100%;
+  padding: 16px 20px 16px 50px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  font-size: 1rem;
+  background: var(--surface-color);
+  transition: var(--transition);
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.modern-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  transform: translateY(-1px);
+}
+
+.modern-input::placeholder {
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  font-size: 1.1rem;
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.modern-input:focus + .input-icon {
+  color: var(--primary-color);
+}
+
+.modern-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+/* Modern Button */
+.modern-btn-primary {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 50%,
+    var(--primary-dark) 100%
+  );
+  border: none;
+  border-radius: var(--border-radius-small);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  text-transform: none;
+  letter-spacing: 0.25px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--secondary-color) 50%,
+    var(--accent-color) 100%
+  );
+}
+
+.modern-btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.modern-btn-primary:hover::before {
+  left: 100%;
+}
+
+.modern-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Form Options Row */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.form-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.form-options input[type="checkbox"] {
+  accent-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.form-options a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.form-options a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Social Login Section */
+.social-login-section {
+  margin: 24px 0 0 0;
+  text-align: center;
+}
+
+.divider {
+  position: relative;
+  margin: 24px 0;
+  text-align: center;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.divider span {
+  background: var(--surface-color);
+  padding: 0 16px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Google Login Button */
+.google-login-button {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  background: var(--surface-color);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.google-login-button:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-light);
+  background: rgba(16, 185, 129, 0.02);
+}
+
+.google-login-button i {
+  font-size: 1.2rem;
+  color: #ea4335;
+}
+
+/* Footer Links */
+.login-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.login-footer p {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.login-footer a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.login-footer a i {
+  margin-right: 6px;
+}
+
+.footer-links {
+  margin-top: 16px;
+  font-size: 0.8rem;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  margin: 0 8px;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.footer-links span {
+  color: var(--text-light);
+}
+
+/* Error and Success States */
+.error-message {
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid var(--error-color);
+  color: var(--error-color);
+  padding: 12px 16px;
+  border-radius: var(--border-radius-small);
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.success-message {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--success-color);
+  color: var(--success-color);
+  padding: 12px 16px;
+  border-radius: var(--border-radius-small);
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Loading State */
+.loading-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Enhanced focus states for accessibility */
+.modern-input:focus,
+.modern-btn-primary:focus,
+.google-login-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Enhanced hover states */
+.modern-input:hover {
+  border-color: var(--primary-light);
+}
+
+/* Theme-specific overrides for existing classes */
+.auth-input {
+  background: var(--surface-color) !important;
+  border: 2px solid var(--border-color) !important;
+  border-radius: var(--border-radius-small) !important;
+  padding: 16px 20px !important;
+  font-size: 1rem !important;
+  transition: var(--transition) !important;
+}
+
+.auth-input:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+.login-title {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  font-size: 1.5rem !important;
+}
+
+.login-subtitle {
+  color: var(--text-secondary) !important;
+  font-weight: 400 !important;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .login-container {
+    padding: 20px;
+    justify-content: center;
+  }
+
+  .modern-login-card {
+    max-width: 480px;
+    min-height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    margin: 20px;
+  }
+
+  .login-illustration {
+    padding: 40px 40px 30px 40px;
+  }
+
+  .app-title {
+    font-size: 2.8rem;
+  }
+
+  .modern-illustration {
+    width: 240px;
+    height: 180px;
+    margin: 20px 0;
+  }
+
+  /* Restaurant icon replaced with app logo */
+
+  .welcome-text h2 {
+    font-size: 2.2rem;
+  }
+
+  .welcome-text p {
+    font-size: 1.1rem;
+    max-width: 320px;
+  }
+
+  .login-form-container {
+    padding: 40px;
+    margin: 0;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+
+  .login-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .login-header p {
+    font-size: 1rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .modern-login-card {
+    max-width: 900px;
+    flex-direction: row;
+    min-height: 600px;
+  }
+
+  .login-illustration {
+    flex: 1;
+    padding: 50px 40px;
+  }
+
+  .app-title {
+    font-size: 3.2rem;
+  }
+
+  .modern-illustration {
+    width: 280px;
+    height: 220px;
+    margin: 24px 0;
+  }
+
+  .login-form-container {
+    flex: 1;
+    padding: 60px 50px;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+
+  /* Floating elements removed for better performance */
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* GPU acceleration for animations */
+.app-logo,
+.modern-illustration img,
+.modern-btn-primary {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize for mobile performance */
+@media (max-width: 767px) {
+  .login-container::before {
+    animation: none; /* Disable complex animations on mobile */
+  }
+
+  .app-logo {
+    animation: none; /* Simplify animations on mobile */
+  }
+}
+
+/* Remove any OTP-related styles */
+.otp-section,
+.login-with-otp-input,
+[class*="otp"] {
+  display: none !important;
+}
