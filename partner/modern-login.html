@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/assets/favicons/favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#FF6B35" />
+    <meta
+      name="description"
+      content="Restaurant Partner App - Manage your restaurant business with ease"
+    />
+    <link rel="apple-touch-icon" href="/assets/favicons/favicon-192.png" />
+
+    <!-- Enhanced Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/assets/css/main.css?v=1646204798" />
+    <link rel="stylesheet" href="/assets/css/storeapp.css?v=1646204798" />
+    <link rel="stylesheet" href="/assets/css/custom.css?v=1646204798" />
+
+    <title>Restaurant Partner Login - Manage Your Business</title>
+
+    <style>
+      /* Immediate styling to prevent flash */
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        background: linear-gradient(135deg, #ff6b35 0%, #ffc107 100%);
+      }
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #ff6b35 0%, #ffc107 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-store-light">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Modern Login Interface -->
+    <div class="login-container" id="modernLogin" style="display: none">
+      <div class="modern-login-card">
+        <!-- Restaurant Illustration Side -->
+        <div class="login-illustration">
+          <div class="floating-elements">
+            <div class="floating-element">🍕</div>
+            <div class="floating-element">🍔</div>
+            <div class="floating-element">🥗</div>
+            <div class="floating-element">🍜</div>
+          </div>
+
+          <div class="restaurant-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+
+          <div class="welcome-text">
+            <h2>Welcome Back!</h2>
+            <p>
+              Manage your restaurant business with our powerful partner platform
+            </p>
+          </div>
+        </div>
+
+        <!-- Login Form Side -->
+        <div class="login-form-container">
+          <div class="login-header">
+            <h1>Restaurant Partner Login</h1>
+            <p>Sign in to manage your restaurant and orders</p>
+          </div>
+
+          <!-- Error/Success Messages -->
+          <div id="errorMessage" class="error-message" style="display: none">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Invalid credentials. Please try again.</span>
+          </div>
+
+          <div
+            id="successMessage"
+            class="success-message"
+            style="display: none"
+          >
+            <i class="fas fa-check-circle"></i>
+            <span>Login successful! Redirecting...</span>
+          </div>
+
+          <!-- Login Form -->
+          <form id="modernLoginForm" class="modern-login-form">
+            <!-- Phone/Email Input -->
+            <div class="modern-form-group">
+              <label for="loginIdentifier" class="modern-label">
+                <i class="fas fa-user"></i> Phone Number or Email
+              </label>
+              <div class="modern-input-wrapper">
+                <input
+                  type="text"
+                  id="loginIdentifier"
+                  name="loginIdentifier"
+                  class="modern-input auth-input"
+                  placeholder="Enter your phone number or email address"
+                  required
+                  autocomplete="username"
+                />
+                <i class="input-icon fas fa-mobile-alt"></i>
+              </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="modern-form-group">
+              <label for="loginPassword" class="modern-label">
+                <i class="fas fa-lock"></i> Password
+              </label>
+              <div class="modern-input-wrapper">
+                <input
+                  type="password"
+                  id="loginPassword"
+                  name="loginPassword"
+                  class="modern-input auth-input"
+                  placeholder="Enter your secure password"
+                  required
+                  autocomplete="current-password"
+                />
+                <i class="input-icon fas fa-lock"></i>
+              </div>
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div
+              class="form-options"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 24px;
+              "
+            >
+              <label
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  cursor: pointer;
+                "
+              >
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  style="accent-color: var(--primary-color)"
+                />
+                <span style="font-size: 0.9rem; color: var(--text-secondary)"
+                  >Remember me</span
+                >
+              </label>
+              <a
+                href="#"
+                style="
+                  font-size: 0.9rem;
+                  color: var(--primary-color);
+                  text-decoration: none;
+                "
+              >
+                Forgot password?
+              </a>
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="modern-btn-primary" id="loginBtn">
+              <span id="loginBtnText">Sign In to Restaurant Portal</span>
+              <div
+                id="loginBtnSpinner"
+                class="loading-spinner"
+                style="display: none"
+              ></div>
+            </button>
+          </form>
+
+          <!-- OTP Login Section -->
+          <div class="otp-section">
+            <div class="otp-title">
+              <i class="fas fa-sms"></i> Quick Login with OTP
+            </div>
+            <div class="modern-form-group" style="margin-bottom: 12px">
+              <div class="modern-input-wrapper">
+                <input
+                  type="tel"
+                  id="otpPhone"
+                  name="otpPhone"
+                  class="modern-input"
+                  placeholder="Enter phone number for OTP"
+                  pattern="[0-9]{10}"
+                />
+                <i class="input-icon fas fa-phone"></i>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="modern-btn-primary"
+              id="sendOtpBtn"
+              style="
+                background: var(--secondary-color);
+                font-size: 0.9rem;
+                padding: 12px;
+              "
+            >
+              <i class="fas fa-paper-plane"></i> Send OTP
+            </button>
+          </div>
+
+          <!-- Social Login Divider -->
+          <div class="divider">
+            <span>Or continue with</span>
+          </div>
+
+          <!-- Social Login Buttons -->
+          <div class="social-buttons">
+            <button type="button" class="social-btn google google-login-button">
+              <i class="fab fa-google"></i>
+              <span>Google</span>
+            </button>
+            <button
+              type="button"
+              class="social-btn facebook facebook-login-button"
+            >
+              <i class="fab fa-facebook-f"></i>
+              <span>Facebook</span>
+            </button>
+          </div>
+
+          <!-- Footer Links -->
+          <div class="login-footer">
+            <p style="margin-bottom: 12px; color: var(--text-secondary)">
+              Don't have a restaurant account?
+            </p>
+            <a href="#" style="font-weight: 600">
+              <i class="fas fa-store"></i> Register Your Restaurant
+            </a>
+            <div
+              style="
+                margin-top: 20px;
+                font-size: 0.8rem;
+                color: var(--text-light);
+              "
+            >
+              <a href="#" style="color: var(--text-secondary); margin: 0 10px"
+                >Privacy Policy</a
+              >
+              <span>•</span>
+              <a href="#" style="color: var(--text-secondary); margin: 0 10px"
+                >Terms of Service</a
+              >
+              <span>•</span>
+              <a href="#" style="color: var(--text-secondary); margin: 0 10px"
+                >Support</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Original React Root (Hidden by default) -->
+    <div id="root" style="display: none"></div>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+      // Modern Login Form Handler
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hide loading screen and show modern login
+        setTimeout(() => {
+          document.getElementById("loadingScreen").style.display = "none";
+          document.getElementById("modernLogin").style.display = "flex";
+        }, 1000);
+
+        // Form submission handler
+        const loginForm = document.getElementById("modernLoginForm");
+        const loginBtn = document.getElementById("loginBtn");
+        const loginBtnText = document.getElementById("loginBtnText");
+        const loginBtnSpinner = document.getElementById("loginBtnSpinner");
+        const errorMessage = document.getElementById("errorMessage");
+        const successMessage = document.getElementById("successMessage");
+
+        loginForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Show loading state
+          loginBtn.disabled = true;
+          loginBtnText.style.display = "none";
+          loginBtnSpinner.style.display = "inline-block";
+          errorMessage.style.display = "none";
+          successMessage.style.display = "none";
+
+          // Get form data
+          const formData = new FormData(loginForm);
+          const loginData = {
+            identifier: formData.get("loginIdentifier"),
+            password: formData.get("loginPassword"),
+            remember: formData.get("rememberMe") === "on",
+          };
+
+          // Simulate login API call
+          setTimeout(() => {
+            // Reset button state
+            loginBtn.disabled = false;
+            loginBtnText.style.display = "inline";
+            loginBtnSpinner.style.display = "none";
+
+            // For demo purposes, show success and redirect to original app
+            successMessage.style.display = "flex";
+
+            setTimeout(() => {
+              // Hide modern login and show original React app
+              document.getElementById("modernLogin").style.display = "none";
+              document.getElementById("root").style.display = "block";
+
+              // Initialize original React app if needed
+              if (window.initializeReactApp) {
+                window.initializeReactApp();
+              }
+            }, 1500);
+          }, 2000);
+        });
+
+        // OTP Send Handler
+        const sendOtpBtn = document.getElementById("sendOtpBtn");
+        const otpPhone = document.getElementById("otpPhone");
+
+        sendOtpBtn.addEventListener("click", function () {
+          const phone = otpPhone.value.trim();
+          if (phone.length >= 10) {
+            sendOtpBtn.disabled = true;
+            sendOtpBtn.innerHTML =
+              '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            setTimeout(() => {
+              sendOtpBtn.disabled = false;
+              sendOtpBtn.innerHTML = '<i class="fas fa-check"></i> OTP Sent!';
+              sendOtpBtn.style.background = "var(--success-color)";
+
+              setTimeout(() => {
+                sendOtpBtn.innerHTML =
+                  '<i class="fas fa-paper-plane"></i> Send OTP';
+                sendOtpBtn.style.background = "var(--secondary-color)";
+              }, 3000);
+            }, 1500);
+          } else {
+            otpPhone.focus();
+            otpPhone.style.borderColor = "var(--error-color)";
+            setTimeout(() => {
+              otpPhone.style.borderColor = "var(--border-color)";
+            }, 2000);
+          }
+        });
+
+        // Social login handlers
+        document
+          .querySelector(".google-login-button")
+          .addEventListener("click", function () {
+            console.log("Google login clicked");
+            this.innerHTML =
+              '<i class="fab fa-google"></i> <span>Connecting...</span>';
+            setTimeout(() => {
+              this.innerHTML =
+                '<i class="fab fa-google"></i> <span>Google</span>';
+            }, 2000);
+          });
+
+        document
+          .querySelector(".facebook-login-button")
+          .addEventListener("click", function () {
+            console.log("Facebook login clicked");
+            this.innerHTML =
+              '<i class="fab fa-facebook-f"></i> <span>Connecting...</span>';
+            setTimeout(() => {
+              this.innerHTML =
+                '<i class="fab fa-facebook-f"></i> <span>Facebook</span>';
+            }, 2000);
+          });
+
+        // Enhanced input focus effects
+        const inputs = document.querySelectorAll(".modern-input");
+        inputs.forEach((input) => {
+          input.addEventListener("focus", function () {
+            this.parentElement.style.transform = "translateY(-1px)";
+          });
+
+          input.addEventListener("blur", function () {
+            this.parentElement.style.transform = "translateY(0)";
+          });
+
+          // Real-time validation
+          input.addEventListener("input", function () {
+            if (this.value.length > 0) {
+              this.style.borderColor = "var(--success-color)";
+            } else {
+              this.style.borderColor = "var(--border-color)";
+            }
+          });
+        });
+      });
+
+      // Fallback to original React app
+      window.showOriginalApp = function () {
+        document.getElementById("modernLogin").style.display = "none";
+        document.getElementById("root").style.display = "block";
+      };
+    </script>
+
+    <!-- Original React App Scripts (load after modern login) -->
+    <script>
+      // Original minified React code would go here
+      // For now, we'll load it conditionally when needed
+    </script>
+  </body>
+</html>
