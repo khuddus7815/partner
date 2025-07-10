@@ -492,27 +492,54 @@
                 remember: formData.get("rememberMe") === "on",
               };
 
-              // Simulate login API call
-              setTimeout(() => {
-                // Reset button state
-                loginBtn.disabled = false;
-                loginBtnText.style.display = "inline";
-                loginBtnSpinner.style.display = "none";
+              // Try to authenticate with the server
+              authenticateUser(loginData)
+                .then((response) => {
+                  // Reset button state
+                  loginBtn.disabled = false;
+                  loginBtnText.style.display = "inline";
+                  loginBtnSpinner.style.display = "none";
 
-                // For demo purposes, show success and redirect to original app
-                successMessage.style.display = "flex";
+                  if (response.success) {
+                    // Store authentication token if provided
+                    if (response.token) {
+                      localStorage.setItem("token", response.token);
+                    }
+                    if (response.auth_token) {
+                      localStorage.setItem("auth_token", response.auth_token);
+                    }
 
-                setTimeout(() => {
-                  // Hide modern login and show original React app
-                  modernLoginOverlay.style.display = "none";
-                  root.style.display = "block";
+                    // Show success message
+                    successMessage.style.display = "flex";
 
-                  // Trigger React app initialization if needed
-                  if (window.initializeReactApp) {
-                    window.initializeReactApp();
+                    setTimeout(() => {
+                      // Hide modern login and show original React app
+                      modernLoginOverlay.style.display = "none";
+                      root.style.display = "block";
+
+                      // Reload the page to ensure React app loads with authentication
+                      window.location.reload();
+                    }, 1000);
+                  } else {
+                    // Show error message
+                    errorMessage.querySelector("span").textContent =
+                      response.message ||
+                      "Invalid credentials. Please try again.";
+                    errorMessage.style.display = "flex";
                   }
-                }, 1500);
-              }, 2000);
+                })
+                .catch((error) => {
+                  console.error("Authentication failed:", error);
+                  // Reset button state
+                  loginBtn.disabled = false;
+                  loginBtnText.style.display = "inline";
+                  loginBtnSpinner.style.display = "none";
+
+                  // Show error message
+                  errorMessage.querySelector("span").textContent =
+                    "Network error. Please check your connection and try again.";
+                  errorMessage.style.display = "flex";
+                });
             });
           }
 
