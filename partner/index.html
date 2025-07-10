@@ -21,30 +21,49 @@
     <link rel="stylesheet" href="/assets/css/main.css?v=1646204798" />
     <link rel="stylesheet" href="/assets/css/storeapp.css?v=1646204798" />
     <link rel="stylesheet" href="/assets/css/custom.css?v=1646204798" />
-    <title>Restaurant Partner Login - Manage Your Business</title>
+    <title>TotalFresh Store App - Partner Login</title>
   </head>
   <body class="bg-store-light">
     <!-- Modern Login Overlay -->
     <div id="modernLoginOverlay" class="login-container">
       <div class="modern-login-card">
-        <!-- Restaurant Illustration Side -->
+        <!-- Modern Illustration Side -->
         <div class="login-illustration">
-          <div class="floating-elements">
-            <div class="floating-element">🍕</div>
-            <div class="floating-element">🍔</div>
-            <div class="floating-element">🥗</div>
-            <div class="floating-element">🍜</div>
+          <div class="app-branding">
+            <div class="app-logo">
+              <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="rgba(255,255,255,0.2)"
+                  stroke="white"
+                  stroke-width="2"
+                />
+                <path d="M30 40h40v8H30z" fill="white" />
+                <path d="M25 52h50v4H25z" fill="white" />
+                <path d="M35 60h30v4H35z" fill="white" />
+                <circle cx="35" cy="35" r="3" fill="white" />
+                <circle cx="50" cy="35" r="3" fill="white" />
+                <circle cx="65" cy="35" r="3" fill="white" />
+              </svg>
+            </div>
+            <h1 class="app-title">TotalFresh</h1>
+            <p class="app-subtitle">Store Partner App</p>
           </div>
 
-          <div class="restaurant-icon">
-            <i class="fas fa-utensils"></i>
+          <div class="modern-illustration">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F83f17a32b358480983dd504897b911e7%2F4ebe184aa65c43ae88bbb94e1825ed77?format=webp&width=800"
+              alt="Modern Store Illustration"
+            />
           </div>
 
           <div class="welcome-text">
             <h2>Welcome Back!</h2>
             <p>
-              Access your restaurant dashboard and manage your business
-              effortlessly
+              Access your store dashboard and manage your business effortlessly
+              with TotalFresh
             </p>
           </div>
         </div>
@@ -52,8 +71,8 @@
         <!-- Login Form Side -->
         <div class="login-form-container">
           <div class="login-header">
-            <h1>Restaurant Partner Login</h1>
-            <p>Sign in to access your restaurant dashboard</p>
+            <h1>Store Partner Login</h1>
+            <p>Sign in to access your TotalFresh store dashboard</p>
           </div>
 
           <!-- Error/Success Messages -->
@@ -152,7 +171,7 @@
 
             <!-- Login Button -->
             <button type="submit" class="modern-btn-primary" id="loginBtn">
-              <span id="loginBtnText">Sign In to Restaurant Portal</span>
+              <span id="loginBtnText">Sign In to Store Portal</span>
               <div
                 id="loginBtnSpinner"
                 class="loading-spinner"
@@ -175,10 +194,10 @@
           <!-- Footer Links -->
           <div class="login-footer">
             <p style="margin-bottom: 12px; color: var(--text-secondary)">
-              Don't have a restaurant account?
+              Don't have a store account?
             </p>
             <a href="#" style="font-weight: 600">
-              <i class="fas fa-store"></i> Register Your Restaurant
+              <i class="fas fa-store"></i> Register Your Store
             </a>
             <div class="footer-links">
               <a href="#">Privacy Policy</a>
